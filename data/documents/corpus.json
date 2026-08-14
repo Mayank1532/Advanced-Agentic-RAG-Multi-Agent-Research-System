@@ -1,0 +1,58 @@
+[
+  {
+    "id": "rag-001",
+    "title": "Hybrid Retrieval",
+    "source": "rag_retrieval_guide",
+    "category": "retrieval",
+    "text": "Hybrid retrieval combines lexical and semantic search to improve evidence discovery. Lexical retrieval such as BM25 is strong when an important term, phrase, identifier, or technical expression appears explicitly in the query and documents. Semantic vector retrieval is useful when the query and relevant evidence use different wording but express a similar meaning. A hybrid system can combine both result sets before later filtering and reranking."
+  },
+  {
+    "id": "rag-002",
+    "title": "BM25 Keyword Retrieval",
+    "source": "rag_retrieval_guide",
+    "category": "retrieval",
+    "text": "BM25 is a lexical ranking method that scores documents according to query terms and their occurrence within documents. It can be particularly useful for exact terminology, product names, identifiers, uncommon technical words, and queries where lexical overlap is important. BM25 does not by itself provide semantic understanding of synonyms or paraphrases."
+  },
+  {
+    "id": "rag-003",
+    "title": "Vector Retrieval",
+    "source": "rag_retrieval_guide",
+    "category": "retrieval",
+    "text": "Vector retrieval represents text as dense embeddings and searches for chunks with similar semantic representations. It can retrieve relevant evidence even when the query uses different words from the source material. However, semantic similarity does not guarantee that the retrieved chunk is the best answer for the exact research question, so candidate retrieval can be followed by filtering and reranking."
+  },
+  {
+    "id": "rag-004",
+    "title": "Metadata Filtering",
+    "source": "rag_retrieval_guide",
+    "category": "retrieval",
+    "text": "Metadata filtering restricts retrieved candidates according to structured attributes such as category, source, year, document type, or topic. Filtering can remove candidates that are semantically similar but outside the requested scope. A useful retrieval pipeline can perform candidate retrieval first and then apply deterministic metadata constraints before expensive reranking."
+  },
+  {
+    "id": "rag-005",
+    "title": "Cross Encoder Reranking",
+    "source": "rag_retrieval_guide",
+    "category": "reranking",
+    "text": "Reranking evaluates a smaller candidate set using a model that jointly considers the query and each candidate passage. A CrossEncoder can provide a more precise relevance score than the initial retrieval stage. Because reranking is more expensive than broad candidate retrieval, a common design is to retrieve a larger candidate set first and rerank only the most promising candidates."
+  },
+  {
+    "id": "rag-006",
+    "title": "Agentic Research Workflow",
+    "source": "agentic_workflow_guide",
+    "category": "agents",
+    "text": "An agentic research workflow separates responsibilities across specialized stages. A researcher gathers evidence, an analyst synthesizes the evidence, a writer produces a structured report, and a reviewer checks the result. State should move explicitly between stages so that each component has a clear contract and the workflow can make controlled routing decisions."
+  },
+  {
+    "id": "rag-007",
+    "title": "LangGraph State and Routing",
+    "source": "agentic_workflow_guide",
+    "category": "orchestration",
+    "text": "A graph-based agent workflow can represent application state, processing nodes, and transitions between nodes. Conditional routing allows the workflow to choose a different next step based on the current state. For example, a reviewer can route a report to the final state when evidence coverage is sufficient or send it back to the writer for one controlled revision."
+  },
+  {
+    "id": "rag-008",
+    "title": "Evidence Grounded Generation",
+    "source": "research_quality_guide",
+    "category": "quality",
+    "text": "Evidence-grounded generation requires the final response to remain supported by retrieved source material. Retrieval quality therefore matters before generation begins. A research system should preserve source identifiers and metadata through the retrieval pipeline so that generated claims can be connected back to evidence and reviewed for support."
+  }
+]
